@@ -1,0 +1,12 @@
+# gwt-unitcache
+gwt-unitCache/**
+
+#Módulos
+war/QILeverageWidgets/**
+
+#Outras pastas e arquivos
+war/WEB-INF/classes/**
+war/WEB-INF/deploy/**
+
+war/*.log
+

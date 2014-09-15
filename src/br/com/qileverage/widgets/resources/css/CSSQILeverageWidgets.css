@@ -1,0 +1,1260 @@
+@CHARSET "UTF-8";
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS MENU SLIDER LATERAL
+ * --------------------------------------------------------------------------------------------------------*/
+menu {
+	width: 100%;
+	height: 100%;
+}
+
+/*---------------------------------------
+ * CSS SECOES MENU SLIDER LATERAL
+ * ------------------------------------*/
+
+secoes {
+	position: fixed;
+	z-index: 5;
+	height: 100%;
+	width: 40px;
+}
+
+secoes ul, acessos ul {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	list-style-type: none;
+}
+
+secoes ul, menu {
+	padding: 0px;
+	margin: 0px;
+}
+
+secoes ul li {
+	width: 100%;
+	line-height: 30px;
+	cursor: pointer;
+	-webkit-transition: background 0.2s;
+}
+
+secoes ul li:hover {
+	background-color: #80b5fb;
+}
+
+secoes ul {
+	background-color: #DDD;
+}
+
+secoes .menu_secaomenuselecionado {
+	-webkit-border-radius: 5px 0px 0px 5px;
+	-moz-border-radius: 5px 0px 0px 5px;
+	border-radius: 5px 0px 0px 5px;
+	box-shadow: -2px 3px 5px #AAA;
+}
+
+secoes .menu_secaomenuselecionado, acessos {
+	background-color: #9fc5f8 !important;
+}
+
+/*---------------------------------------
+ * CSS ACESSOS MENU SLIDER LATERAL
+ * ------------------------------------*/
+acessos {
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	-webkit-border-radius: 0px 5px 0px 0px;
+	-moz-border-radius: 0px 5px 0px 0px;
+	border-radius: 0px 5px 0px 0px;
+	left: 40px;
+	z-index: 4;
+}
+/************************************************************************/
+/*CORREÇÃO FALTA CSS3 IE8,IE7 E IE6*/
+/************************************************************************/
+@if user.agent ie8 ie7 ie6 {
+	acessos {
+	left: -200px;
+}
+
+menu .menu_acessos_ativaracessos {
+	left: 40px;
+}
+
+}
+
+@if !user.agent ie8 ie7 ie6 {
+	acessos {
+	-webkit-transform: translateX(-200px);
+	-moz-transform: translateX(-200px);
+	-ms-transform: translateX(-200px);
+	transform: translateX(-200px);
+	/**/
+	-webkit-transition: -webkit-transform 0.5s;
+	-moz-transition: -moz-transform 1s;
+	-ms-transition: -ms-transform 1s;
+	-o-transition: -o-transform 1s;
+	transition: transform 1s;
+	/**/
+	box-shadow: 3px 3px 5px #AAA;
+}
+
+menu .menu_acessos_ativaracessos {
+	-webkit-transform: translateX(0px) !important;
+	-ms-transform: translateX(0px);
+	transform: translateX(0px);
+}
+}
+
+menu .botaosair
+{
+	position: fixed;
+	margin: 10px;
+	bottom: 0;
+	left: 0;
+	z-index: 5;
+	cursor: pointer;	
+}
+
+/****************************************************************************/
+
+acessos .menu_acessos_imagemocultar {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	cursor: pointer;
+	border: 1px solid transparent;
+}
+
+acessos .menu_acessos_imagemocultar:HOVER {
+	border-color: #AAA;
+	border-radius: 5px;
+}
+
+acessos .menu_acessos_labeldescricaosecao {
+	width: 100%;
+	line-height: 30px;
+	height: 30px;
+	text-align: center;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+acessos .menu_acessos_linhahorizontal {
+	margin: 0px 5% 0px 5%;
+	height: 0px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000;
+}
+
+acessos .menu_acessos_painelacessos {
+	width: 100%;
+	height: 100%;
+	padding: 5px 0px 0px 0px;
+	margin: 0px;
+}
+
+acessos .menu_acessos_painelacessos_labelacesso {
+	margin: 2px;
+}
+
+acessos .menu_acessos_painelacessos_labelacesso:hover {
+	font-weight: bold;
+	cursor: pointer;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS Pilha ELementos Horizontal
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_pilhahorizontal {
+}
+
+.widget_pilhahorizontal_itemadicionado {
+	vertical-align: bottom;
+	display: inline-block;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS WIDGET QIPOPUP
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_popup {
+	/*width: 350px;*/
+	/*height: 500px;*/
+	z-index: 10;
+}
+
+.widget_popup_pilhavertical {
+	/*width: 350px;*/
+	/*height: 500px;*/
+	padding: 2px;
+}
+
+.widget_popup_labeltitulo {
+	font-weight: bold;
+	height: 25px;
+	line-height: 25px;
+	font-size: 18px;
+	overflow: hidden;
+}
+
+.widget_popup_linhahorizontal/*,.widget_popup_conteudo*/ {
+	border: 1px solid #AAA;
+}
+
+.widget_popup_linhahorizontal {
+	margin: 5px 2px 5px 2px;
+}
+
+.widget_popup_conteudo {
+	border-radius: 10px;
+	width: 100%;
+	/*height: 425px;*/
+}
+
+.widget_popup_botaoOk, .widget_popup_botaoCancelar {
+	width: 100px;
+	height: 30px;
+	margin: 0px 5px 0px 5px;
+}
+.widget_popup_botaoOk {
+
+}
+
+.widget_popup_botaoCancelar {
+
+}
+
+.widget_popup_pilhahorizontalbotoes {
+	width: 100%;
+	height: 30px;
+	margin: 5px 0px 0px 0px;
+	text-align: center;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS WIDGET QIPOPUP SELECAO
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_popupselecao {
+
+}
+
+.widget_popupselecao_pilhahorizotalcampos {
+	width: 100%;
+	height: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.widget_popupselecao_pilhahorizotalcampos * {
+	vertical-align: middle;
+	margin: 5px;
+}
+
+.widget_popupselecao_pilhahorizotalcampos_labelfiltro {
+	width: 75px;
+	font-weight: bold;
+	text-align: right;
+}
+
+.widget_popupselecao_pilhahorizotalcampos_imagembusca {
+	cursor: pointer;
+}
+
+.widget_popupselecao_pilhahorizotalcampos_textboxfiltro {
+	width: 200px;
+	border-radius: 5px;
+	outline: none;
+}
+
+.widget_popupselecao_listacelulasselecao {
+	height: 365px;
+	margin: 0px 10px 0px 10px;
+	border: 1px solid #AAA;
+	border-radius: 5px;
+}
+
+.widget_popupselecao_listacelulasselecao_labelsverticais
+{
+	width: 235px;
+}
+
+.widget_popupselecao_pagerpanelcelulaselecao {
+	overflow-y: scroll !important;
+}
+
+.widget_popupselecao_listacelulasselecao_estilocelula
+{
+	border: 1px solid #AAA;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS WIDGET PESQUISA E SELEÇÃO
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_selecaopesquisa {
+
+}
+
+.widget_selecaopesquisa_imagem {
+	margin: 3px;
+	cursor: pointer;
+}
+
+.widget_selecaopesquisa_labeltitulo {
+	font-weight: bold;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS WIDGET CAMPO EDITÁVEL
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_campoeditavel {
+	width: auto;
+}
+.widget_campoeditavel * {
+	margin: 0px 5px 0px 5px;
+	vertical-align: middle;
+}
+
+.widget_campoeditavel_containertrocawidgets {
+	height: 25px;
+}
+
+.widget_campoeditavel_labelvaloreditavel {
+	text-align: left;
+	margin-left: 0px;
+	height: 25px;
+	line-height: 25px;
+}
+.widget_campoeditavel_txbvaloreditavel {
+	padding: 2px !important;
+	width: 50px;
+	text-align: left;
+}
+.widget_campoeditavel_imagemeditar {
+	cursor: pointer;
+	text-align: right;
+	margin-right: 0px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS PILHA HORIZONTAL COM CELULAS
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_horizontalpanel {
+	margin: 10px 10px 10px 20px;
+	width: 100%;
+}
+
+.widget_horizontalpanel_celulas {
+	display: inline-block;
+	text-align: center;
+	width: 25%;
+}
+
+.widget_horizontalpanel_itemadicionado {
+
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS SELECAO PAGAMENTO
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_selecaopagamento {
+	padding: 0px;
+}
+
+.widget_selecaopagamento > li
+{
+	list-style: none;
+	display: inline-block;
+	width: 25%;
+	text-align: center;
+}
+
+.widget_selecaopagamento_labeldescricao {
+	font-weight: bold;
+	text-indent: 50px;
+}
+
+.widget_selecaopagamento_painelselecaopagamento {
+
+}
+
+.widget_selecaopagamento_painelselecaopagamento_opcaopagamento {
+	width: 100px;
+	margin: auto;
+	padding: 5px;
+	border: 2px solid transparent;
+	cursor: pointer;
+}
+
+.widget_selecaopagamento_painelselecaopagamento_opcaopagamento_labelnome {
+	font-weight: bold;
+}
+
+.widget_selecaopagamento_painelselecaopagamento_opcaopagamento_imagem {
+	width: 32px;
+	height: 32px;
+	
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.widget_selecaopagamento_painelselecaopagamento_opcaopagamento_selecionado {
+	border: 2px solid #9FC5F8;
+	border-radius: 5px;
+}
+.widget_selecaopagamento_painelselecaopagamento_opcaopagamento_labelnome_selecionado {
+	color: #9FC5F8;
+}
+
+.widget_selecaopagamento_painelselecaopagamento_opcaopagamento_imagem_selecionado {
+  -webkit-filter: grayscale(0%);
+  -moz-filter: grayscale(0%);
+  -ms-filter: grayscale(0%);
+  -o-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
+
+.widget_painelcondicoespagamento
+{
+	
+}
+
+.widget_painelcondicoespagamento_listainformacaopagamento
+{
+	padding: 0px;
+	text-align: center;
+}
+
+.widget_painelcondicoespagamento_listainformacaopagamento > li
+{
+	display: inline-block;
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento
+{
+	
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_labeltitulo
+{
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao
+{
+	
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao > li
+{
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao_exibicaoopcaopagamento
+{
+}
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao_total
+{
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao_exibicaoopcaopagamento_icone
+{
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao_exibicaoopcaopagamento_texto
+{
+	margin-left: 5px
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao li div .widget_campoeditavel_imagemeditar 
+{
+	vertical-align: middle;
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao li div .widget_campoeditavel_containertrocawidgets
+{
+	
+	height: 25px;
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento_camposinformacao li div .widget_campoeditavel_containertrocawidgets > input[type="text"]
+{
+	position: relative;
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento li div .widget_qiform_containercampo_labelcampo
+{
+	text-align: right;
+	width: 200px;
+}
+
+.widget_painelcondicoespagamento_painelinformacaopagamento li div .widget_qiform_containercampo_widgetcampo
+{
+	width: 200px;
+	text-align: left;
+}
+
+
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS BOTAO PADRAO
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_botoes_botaopadrao
+{
+	width: 100px;
+	height: 22px;
+}
+
+.widget_botoes_botaopadrao_layouthorizontal
+{
+	width: 100%;
+	height: 100%;
+}
+
+.widget_botoes_botaopadrao_layouthorizontal_labeldescricao
+{
+	vertical-align: middle;
+	margin: 0px 5px 0px 5px;
+}
+
+.widget_botoes_botaopadrao_layouthorizontal_imagembotao
+{
+	vertical-align: middle;
+	margin: 0px 5px 0px 5px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS CRUD PADRAO
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_crud
+{
+	width: 100%;
+	height: 99%;
+}
+
+.widget_crud_griddados
+{
+	width: auto;
+	height: 40%;
+	margin: 5px 30px 0px 30px;
+	border: 1px solid #AAA;
+	border-radius: 10px;
+	padding: 10px;	
+	text-align: center;
+}
+
+.widget_crud_griddados_emptywidget
+{
+	margin: 5px;
+	color: red;
+}
+
+.widget_crud_painelhorizontalcampos
+{
+	width: auto;
+	height: 45%;
+	border: 1px solid #AAA;
+	border-radius: 10px;
+	margin: 10px 10px 5px;
+	padding: 0px;
+}
+
+.widget_crud_painelhorizontalcampos_labeldescricaocrud
+{
+	font-weight: bold;
+	margin: 5px 0px 10px 10px;
+	height: 5%;
+	width: 49%;
+}
+
+.widget_crud_painelhorizontalcampos_labeldescricaocamposauxiliarcrud
+{
+	font-weight: bold;
+	margin: 5px auto 0px 10px;
+	text-align: left;
+	height: 5%;
+}
+
+.widget_crud_painelhorizontalcampos_camposadicao
+{
+	
+}
+
+.widget_crud_painelhorizontalcampos_painelbotoes{
+	width: 100%;
+	margin: 1px 0px 5px 0px;
+}
+
+.widget_crud_painelhorizontalcampos_painelbotoes_botaoadicionaralterar{
+	margin-right: 10px;
+	margin-left: auto;
+}
+
+.widget_crud_painelhorizontalcampos_painelbotoes_botaocancelar{
+	margin-left: 10px;
+	margin-right: auto;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS GRID 
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_grid
+{
+	width: 100%;
+}
+
+.widget_grid_pagerpanel
+{
+	margin: auto;
+}
+
+.widget_grid_coluna
+{
+	height: 200px;
+}
+
+.widget_grid_colunaopcoes
+{
+	width: 100px;
+}
+
+.widget_grid_colunaopcoes_colunaeditar_imagemexibicao{
+	cursor: pointer;
+	margin: 0px 2px 0px 2px;	
+}
+
+.widget_grid_colunaopcoes_colunaexcluir_imagemexcluir{
+	cursor: pointer;
+	margin: 0px 2px 0px 2px;
+}
+
+.widget_crud_painelcamposcadastro
+{
+	width: 100%;
+	height: 80%;
+	overflow-y: auto;
+}
+
+.widget_crud_painelcamposcadastro_qiform
+{
+	width: 50%;
+}
+
+.widget_crud_painelcamposcadastro_hrdivisao
+{
+	height: 100%;
+	margin: 0px auto 15px auto;
+	border: 1px solid #AAA;
+}
+
+.widget_crud_painelcamposcadastro_widgetpainelextra
+{
+	width: 49%;
+}
+
+.widget_crud_painelcamposcadastro_listabotoes_celula > li
+{
+	width: 50%;
+	display: inline-block;
+}
+
+.widget_crud_painelcamposcadastro_listabotoes_celula
+{
+	list-style: none;
+	padding: 0px;
+	/*position: absolute;
+	bottom: 0px;
+	text-align: center;
+	width: auto;*/
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS QIFORM 
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_qiform
+{
+	list-style: none;
+	height: 100%;
+	padding: 0px;
+}
+
+.widget_qiform_containercampo
+{
+	width: 100%;
+}
+
+.widget_qiform_containercampo_labelcampo
+{
+	font-weight: bold;
+	vertical-align: middle;
+	margin: 0px 5px 0px 0px;
+	width: 200px;
+	text-align: right;
+}
+
+.widget_qiform_containercampo_widgetcampo
+{
+	vertical-align: middle;
+	text-align: left;
+}
+
+.widget_qiform_containercampo_labelcampo_campoinvalido
+{
+	color: #7E0000;
+}
+
+.widget_qiform_containercampo_widgetcampo_campoinvalido
+{
+	box-shadow: 0px 0px 5px #8A0000;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS MENSAGENS 
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_mensagens
+{
+	width: 500px;
+	height: 120px;
+}
+
+.widget_mensagens_displaymensagem
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.widget_mensagens_displaymensagem > li
+{
+	list-style: none;
+	display: inline-block;
+	
+	vertical-align: middle;
+	text-align: center;
+}
+
+.widget_mensagens_imagem
+{
+	text-align: center;
+	vertical-align: middle;
+	margin: 10px;
+}
+
+.widget_mensagens_celulaimagem
+{
+	width: 84px;
+	height: 84px;
+}
+.widget_mensagens_celulatextomensagem
+{
+	height: 60px ;
+	width: 400px;
+	overflow: auto;
+}
+
+.widget_mensagens_textomensagem
+{
+	word-wrap: normal;
+	font-size: 15px;
+}
+
+.widget_mensagens_painelbotoes
+{
+	text-align: center;
+}
+
+.widget_mensagens_mensagemalerta
+{
+	z-index: 10;
+}
+
+.widget_mensagens_mensagemalerta_botaook
+{
+	width: 100px;
+}
+
+.widget_mensagens_mensagemsucesso
+{
+	z-index: 10;
+}
+
+.widget_mensagens_mensagemsucesso_botaook
+{
+	width: 100px;
+}
+
+.widget_mensagens_mensagemerro
+{
+	z-index: 10;
+}
+
+.widget_mensagens_mensagemerro_botaook
+{
+	width: 100px;
+}
+
+.widget_mensagens_mensagemconfirmacao
+{
+	z-index: 10;
+}
+
+.widget_mensagens_mensagemconfirmacao_painelbotoes
+{
+	text-align: center;
+	padding: 0px;
+	margin: 0px;
+}
+.widget_mensagens_mensagemconfirmacao_painelbotoes > li
+{
+	list-style: none;
+	width: 50%;
+	display: inline-block;
+}
+
+.widget_mensagens_mensagemconfirmacao_painelbotoes_botaosim
+{
+	width: 100px;
+	margin: 0px 5px;
+}
+
+.widget_mensagens_mensagemconfirmacao_painelbotoes_botaonao
+{
+	width: 100px;
+	margin: 0px 5px;
+}
+
+.widget_mensagens_mensagemconfirmacao_painelbotoes_celulabotaosim
+{
+	text-align: right;
+}
+
+.widget_mensagens_mensagemconfirmacao_painelbotoes_celulabotaonao
+{
+	text-align: left;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS POPUP TRAVA SISTEMA 
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_popuptravarsistema
+{
+	z-index: 10;
+}	
+
+.widget_popuptravarsistema_painelconteudo
+{
+	width: 200px;
+	height: 100px;
+	padding: 20px;
+	cursor: progress;
+}
+
+
+.widget_popuptravarsistema_labelloading
+{
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.widget_popuptravarsistema_widgetloading
+{
+	
+}
+
+.widget_popuptravarsistema_painelwidgetloading
+{
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	margin: 20px 0px;
+}
+
+.widget_popuptravarsistema_espelho
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	display: block;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+	background-color: #000;
+	opacity: 0.3;
+	filter: alpha(opacity=30);	
+	cursor: not-allowed;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS PAINEL SELECAO ENTIDADE
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_painelselecaoitens
+{
+	vertical-align: top;
+}
+
+.widget_painelselecaoitens_painelconteudo
+{
+	width: 95%;
+}
+
+.widget_painelselecaoitens_labelTitulo
+{
+	margin-left: 5px;
+	font-weight: bold;
+}
+
+.widget_painelselecaoitens_botaoacao
+{
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.widget_painelselecaoitens_listabotoesfuncionalidades
+{
+	padding: 0px;
+	margin: 0px;
+	vertical-align: top;
+}
+
+.widget_painelselecaoitens_listabotoesfuncionalidades > li
+{
+	list-style: none;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS PAINEL SELECAO ENTIDADE SIMPLES
+ * --------------------------------------------------------------------------------------------------------*/
+.widget_painelselecaoitenssimples_listaitensselecionados
+{
+	padding: 3px;
+	height: 150px;
+	border: solid 1px #AAA;
+	margin: 2px;
+	border-radius: 10px;
+}
+
+.widget_painelselecaoitenssimples_listaitensselecionados > li
+{
+	list-style: none;
+}
+
+.widget_painelselecaoitenssimples_listaitensselecionados > li > div
+{
+	height: 20px;
+}
+
+.widget_painelselecaoitenssimples_itemadicionado
+{
+	width: 95%;
+	vertical-align: middle;
+}
+
+.widget_painelselecaoitenssimples_itemadicionado:HOVER
+{
+	background-color: #EEE;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * CSS FILTRO OCULTAVEL
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_filtroocultavel
+{
+	width: 95%;
+	border: 1px solid #AAA;
+	border-radius: 10px;
+	margin: 10px auto;
+}
+
+.widget_filtroocultavel_estrutura
+{
+	width: 100%;
+}
+
+.widget_filtroocultavel_disclosurepanel
+{
+	width: 100%;
+}
+
+.widget_filtroocultavel_disclosurepanel_listaitens
+{
+	padding: 0px;
+	margin: 5px;
+}
+
+.widget_filtroocultavel_disclosurepanel_listaitens > li
+{
+	list-style: none;
+}
+
+.widget_filtroocultavel_painelbotoes
+{
+	width: 100%;
+	text-align: center;
+}
+
+.widget_filtroocultavel_painelbotoes_botaofiltro
+{
+	width: 100px;
+	margin: 5px;
+	padding: 2px;
+}
+
+.widget_filtroocultavel_painelbotoes_botaolimparcampos
+{
+	width: 100px;
+	margin: 5px;
+	padding: 2px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * Widget Troca Estado
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_trocaestado
+{
+	border: 0px;
+	background: none;
+	outline: none;
+}
+
+.widget_trocaestado_aberto
+{
+
+}
+
+.widget_trocaestado_fechado
+{
+
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * Painel cor
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_paineltrocacor
+{
+	margin: 5px;
+	border: 1px solid #AAA;
+}
+
+.widget_campotrocacor_botaotroca
+{
+	background: none;
+	border: 0px;
+	margin: 0px;
+	outline: none;
+	padding: 0px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * Mensagem Instantanea
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_mensagens_mensageminstantanea_labelmensagem
+{
+	font-weight: bold;
+	text-align: center;
+	width:100%;
+}
+
+.widget_mensagens_mensageminstantanea_botoesconfirmacao
+{
+	padding: 2px 10px;
+	outline: none;
+	margin: 0px 5px;
+	/*border: 1px solid #AAA;
+	background-color: #EEE;*/
+}
+
+.widget_mensagens_mensageminstantanea_botaosim
+{
+	margin-left: auto;
+}
+
+.widget_mensagens_mensageminstantanea_botaonao
+{
+	margin-right: auto;
+}
+
+.widget_mensagens_mensageminstantanea {
+	position: absolute !important;
+	width: 50%;
+	min-height: 70px;
+	z-index: 10;
+	background-color: #DDDDDD;
+	border-width: 1px;
+	border-color: #AAAAAA;
+	border-style: solid;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	bottom: 10px;
+	margin-left: 25%;
+	margin-right: 25%;
+}
+
+.widget_mensagens_mensageminstantanea_painelestrutura
+{
+	width: 100%;
+}
+
+.widget_mensagens_mensageminstantanea_painelbotoes
+{
+	width: 100%;
+	list-style: none;
+	padding: 0px;
+	margin: 5px;
+}
+
+.widget_mensagens_mensageminstantanea_painelbotoes > li
+{
+	width: 50%;
+	list-style: none;
+	display: inline-block;
+}
+
+.widget_mensagens_mensageminstantanea_painelbotoes_celulabotaosim
+{
+	text-align: right;
+}
+
+.widget_mensagens_mensageminstantanea_painelbotoes_celulabotaonao
+{
+	text-align: left;
+}
+
+
+.widget_mensagens_mensageminstantanea_animacao
+{
+	-moz-animation: ocultar 4s;
+	-webkit-animation: ocultar 4s;
+}
+
+@keyframes ocultar { 
+	0% 		{opacity: 1;}
+	25% 	{opacity: 1;}
+	100%	{opacity: 0;}
+}
+
+@-moz-keyframes ocultar { 
+	0% 		{opacity: 1;}
+	25%		{opacity: 1;}
+	100%	{opacity: 0;}
+}
+
+@-webkit-keyframes ocultar { 
+	0% 		{opacity: 1;}
+	25%		{opacity: 1;}
+	100%	{opacity: 0;}
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * MISC
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_misc_escolhadata_botaodataatual
+{
+	cursor: pointer;
+	margin: 5px;
+}
+
+.widget_misc_selecaoentidade
+{
+	width: 50%;
+	text-align: right;
+	vertical-align: top;
+}
+
+.widget_misc_selecaoentidade_labeldescricao
+{
+	margin: 40px 10px;
+	font-weight: bold;
+}
+
+.widget_misc_selecaoentidade_labelitenselecionados
+{
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	height: 15px;
+}
+
+.widget_misc_selecaoentidade_pilhaelementos
+{
+	border: 1px solid #AAAAAA;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	width: 200px;
+	height: 95px;
+	overflow-y: auto;
+	margin: 2px;
+	text-align: left;
+}
+
+.widget_misc_selecaoentidade_camposelecao:HOVER
+{
+	background-color: #EEEEEE;
+	cursor: pointer;
+	cursor: hand;
+}
+
+.widget_misc_selecaoentidade_camposelecao_label_selecionado
+{
+	font-weight: bold;
+	margin: 2px 5px;
+	text-indent: 5px;
+	width: 150px;
+}
+
+.widget_misc_selecaoentidade_camposelecao_label_deselecionado
+{
+	color: #AAAAAA;
+	margin: 2px 5px;
+	width: 150px;
+}
+
+.widget_misc_selecaoentidade_camposelecao_imagemexibirouocultarentidade
+{
+	cursor: pointer;
+	margin: 0px 2px;
+}
+
+/*-----------------------------------------------------------------------------------------------------------
+ * MULTIPLA SELEÇÃO
+ * --------------------------------------------------------------------------------------------------------*/
+
+.widget_multiplaselecao_cellwidgetselecao
+{
+	width: 40%;
+	height: 100%;
+	margin: 0px 5px;
+	border: 1px solid #AAAAAA;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
