@@ -11,12 +11,13 @@ import com.google.gwt.user.client.ui.TextBoxBase;
 
 public class QIMascara
 {
+	
 	public static void adicionarMascara(final TextBoxBase widget, final String mascara)
 	{
-
+		
 		widget.addKeyUpHandler(new KeyUpHandler()
 		{
-
+			
 			@Override
 			public void onKeyUp(KeyUpEvent event)
 			{
@@ -25,25 +26,32 @@ public class QIMascara
 					if (event.getNativeKeyCode() != (KeyCodes.KEY_DELETE))
 					{
 						String novoTexto = QIUteis.getStringSemMascara(widget.getText(), mascara);
-
-						widget.setText(QIUteis.getStringFormatada(novoTexto, mascara));
+						
+						if (novoTexto.isEmpty())
+						{
+							widget.setText("");
+						}
+						else
+						{
+							widget.setText(QIUteis.getStringFormatada(novoTexto, mascara));
+						}
 					}
 				}
 			}
 		});
 	}
-
+	
 	public static void adicionarRestricaoLetras(final TextBoxBase widget, final String valoresRestritos)
 	{
-
+		
 		widget.addKeyPressHandler(new KeyPressHandler()
 		{
-
+			
 			@Override
 			public void onKeyPress(KeyPressEvent event)
 			{
 				String novoChar = String.valueOf(event.getCharCode());
-
+				
 				if (!valoresRestritos.toLowerCase().contains(novoChar.toLowerCase()))
 				{
 					widget.cancelKey();

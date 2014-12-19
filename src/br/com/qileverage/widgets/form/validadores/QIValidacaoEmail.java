@@ -5,7 +5,9 @@ import br.com.qileverage.widgets.form.campospersonalizados.QICampoAbstrato;
 public class QIValidacaoEmail implements QIValidarCampo
 {
 	private static final QIValidacaoEmail INSTANCE;
-
+	
+	private String formatoEmail = "^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$";
+	
 	static
 	{
 		INSTANCE = new QIValidacaoEmail();
@@ -20,13 +22,8 @@ public class QIValidacaoEmail implements QIValidarCampo
 	public boolean validarCampo(QICampoAbstrato campoValidacao)
 	{
 		String textoCampoValidado = campoValidacao.getValorCampo();
-
-		if (textoCampoValidado.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$"))
-		{
-			return true;
-		}
-
-		return false;
+		
+		return textoCampoValidado.matches(formatoEmail) || textoCampoValidado.isEmpty();
 	}
 
 }

@@ -35,12 +35,12 @@ public class QIPainelCor extends SimplePanel
 		alterarCorPainel();
 	}
 
-	public void setDefaultSizePainel()
+	private void setDefaultSizePainel()
 	{
 		setSizePainel(24, 24);
 	}
 
-	public void setSizePainel(double width, double height)
+	private void setSizePainel(double width, double height)
 	{
 		this.getElement().getStyle().setWidth(width, Unit.PX);
 		this.getElement().getStyle().setHeight(height, Unit.PX);

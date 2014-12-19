@@ -77,6 +77,17 @@ public abstract class QICampoAbstrato extends QIPilhaHorizontal
 
 		return true;
 	}
+	
+	public Widget getwCampo()
+	{
+		return wCampo;
+	}
+
+	
+	public void setwCampo(Widget wCampo)
+	{
+		this.wCampo = wCampo;
+	}
 
 	private void procedimentoAdicao(Widget campo)
 	{
@@ -147,6 +158,11 @@ public abstract class QICampoAbstrato extends QIPilhaHorizontal
 	public void setStrPreCookieName(String strPreCookieName)
 	{
 		this.strPreCookieName = strPreCookieName;
+	}
+	
+	public QIValidarCampo getValidadorCampo()
+	{
+		return validadorCampo;
 	}
 
 	// METODOS ABSTRATOS

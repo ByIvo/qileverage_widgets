@@ -175,6 +175,12 @@ public abstract class QIFormUpload extends FormPanel implements QITela
 	{
 		pilha.adicionarWidget(campo);
 	}
+	
+	
+	public FileUpload getFileUpload()
+	{
+		return fileUpload;
+	}
 
 	public abstract void enviouConteudo();
 

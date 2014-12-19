@@ -48,7 +48,7 @@ public abstract class QIGridColunaOpcoes<ENTIDADE> extends QIGrid<ENTIDADE>
 		};
 
 		adicionarColuna(colComposta, "Opções");
-		getCellTable().setColumnWidth(colComposta, "100px");
+		getCellTable().setColumnWidth(colComposta, "auto");
 	}
 
 }

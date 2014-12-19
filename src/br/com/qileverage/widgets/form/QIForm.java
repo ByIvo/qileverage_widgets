@@ -46,7 +46,7 @@ public class QIForm extends QIUnorderedList
 			@Override
 			public void onKeyPress(KeyPressEvent event)
 			{
-				if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER)
+				if (event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER && event.isControlKeyDown())
 				{
 					QIForm.this.fireEvent(new EnvioFormularioEvent());
 				}

@@ -129,7 +129,7 @@ public abstract class QICampoEditavelMoeda extends QICampoAbstrato implements QI
 		lblValor.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_campoeditavel_labelvaloreditavel());
 		imgEditar.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_campoeditavel_imagemeditar());
 		txbAlteracao.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_campoeditavel_txbvaloreditavel());
-
+		
 		imgEditar.addClickHandler(new ClickHandler()
 		{
 
@@ -210,4 +210,17 @@ public abstract class QICampoEditavelMoeda extends QICampoAbstrato implements QI
 		EDICAO, FECHADO;
 	}
 
+	
+	public QIPilhaHorizontal getPilhaItens()
+	{
+		return pilhaItens;
+	}
+
+	
+	public void setPilhaItens(QIPilhaHorizontal pilhaItens)
+	{
+		this.pilhaItens = pilhaItens;
+	}
+
+	
 }
