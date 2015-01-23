@@ -82,6 +82,9 @@ public abstract class QIFormUpload extends FormPanel implements QITela
 			{
 				QIControlePopupBloqueio.mostrarBloqueio(true);
 			}
+			
+			this.getAction();
+			
 			enviouConteudo();
 			this.submit();
 
