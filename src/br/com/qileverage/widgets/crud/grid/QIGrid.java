@@ -12,97 +12,101 @@ import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.view.client.HasRows;
 import com.google.gwt.view.client.ListDataProvider;
+import com.google.gwt.view.client.RowCountChangeEvent;
 import com.google.gwt.view.client.SelectionChangeEvent;
 import com.google.gwt.view.client.SelectionChangeEvent.Handler;
 import com.google.gwt.view.client.SingleSelectionModel;
 
 public abstract class QIGrid<ENTIDADE> extends QIPilhaVertical implements QITela
 {
-
+	
 	private CellTable<ENTIDADE> cellTable;
 	private ListDataProvider<ENTIDADE> dataProvider;
 	private SingleSelectionModel<ENTIDADE> singleSelectionModel;
 	private ShowMorePagerPanel pagerPanel;
-
+	
+	private boolean adicionouRowCountHandler = false;
+	
 	public QIGrid()
 	{
 		montarEstrutura();
 	}
-
+	
 	public void montarEstrutura()
 	{
 		instanciarItens();
 		setarInformacoes();
 		montarTela();
 	}
-
+	
 	// METODOS ACOES
-
+	
 	public void adicionarEntidade(ENTIDADE entidade)
 	{
 		dataProvider.getList().add(entidade);
 	}
-
+	
 	public void adicionarListaEntidades(List<ENTIDADE> listaEntidade)
 	{
 		dataProvider.getList().addAll(listaEntidade);
 	}
-
+	
 	public void setListaEntidades(List<ENTIDADE> listaEntidade)
 	{
 		dataProvider.getList().clear();
 		adicionarListaEntidades(listaEntidade);
 	}
-
+	
 	public boolean removerEntidade(ENTIDADE entidade)
 	{
 		return dataProvider.getList().remove(entidade);
 	}
-
+	
 	public void setEntidade(ENTIDADE entidade)
 	{
 		int entidadeVelhaIndex = dataProvider.getList().indexOf(entidade);
 		dataProvider.getList().set(entidadeVelhaIndex, entidade);
-
+		
 		this.refreshEntidades();
 	}
-
+	
 	public void limparListaEntidades()
 	{
 		dataProvider.getList().clear();
 	}
-
+	
 	public void refreshEntidades()
 	{
 		dataProvider.refresh();
 	}
-
+	
 	public ENTIDADE getEntidadeSelecionada()
 	{
 		return singleSelectionModel.getSelectedObject();
 	}
-
+	
 	public List<ENTIDADE> getListaEntidades()
 	{
 		return dataProvider.getList();
 	}
-
+	
 	public void selecionarEntidade(ENTIDADE entidade, boolean selecionar)
 	{
 		singleSelectionModel.setSelected(entidade, selecionar);
 	}
-
+	
 	public void adicionarColuna(Column<ENTIDADE, ?> coluna, final String nomeColuna)
 	{
 		cellTable.addColumn(coluna, new SafeHtml()
 		{
-
+			
 			/**
 			 * 
 			 */
 			private static final long serialVersionUID = 1L;
-
+			
 			@Override
 			public String asString()
 			{
@@ -110,12 +114,12 @@ public abstract class QIGrid<ENTIDADE> extends QIPilhaVertical implements QITela
 			}
 		});
 	}
-
+	
 	public boolean contemEntidade(ENTIDADE entidade)
 	{
 		return dataProvider.getList().contains(entidade);
 	}
-
+	
 	// METODOS SOBRECARREGADOS
 	@Override
 	public void instanciarItens()
@@ -125,21 +129,22 @@ public abstract class QIGrid<ENTIDADE> extends QIPilhaVertical implements QITela
 		singleSelectionModel = new SingleSelectionModel<ENTIDADE>();
 		pagerPanel = new ShowMorePagerPanel();
 	}
-
+	
 	@Override
 	public void setarInformacoes()
 	{
 		setarEmptyWidgetPadrao();
-
+		
 		cellTable.setSelectionModel(singleSelectionModel);
 		dataProvider.addDataDisplay(cellTable);
 		pagerPanel.setDisplay(cellTable);
-
+		
 		cellTable.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_grid());
 		pagerPanel.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_grid_pagerpanel());
-
+		
 		singleSelectionModel.addSelectionChangeHandler(new Handler()
 		{
+			
 			@Override
 			public void onSelectionChange(SelectionChangeEvent event)
 			{
@@ -149,37 +154,37 @@ public abstract class QIGrid<ENTIDADE> extends QIPilhaVertical implements QITela
 				}
 			}
 		});
-
+		
 	}
-
+	
 	private void setarEmptyWidgetPadrao()
 	{
 		Label lblWidgetVazio = new Label();
 		lblWidgetVazio.setText("Não há nenhum item para ser exibido!");
-
+		
 		lblWidgetVazio.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_crud_griddados_emptywidget());
-
+		
 		cellTable.setEmptyTableWidget(lblWidgetVazio);
 	}
-
+	
 	@Override
 	public void montarTela()
 	{
 		this.adicionarWidget(pagerPanel);
 	}
-
+	
 	// GETTERS AND SETTERS
-
+	
 	public CellTable<ENTIDADE> getCellTable()
 	{
 		return cellTable;
 	}
-
+	
 	public void setCellTable(CellTable<ENTIDADE> cellTable)
 	{
 		this.cellTable = cellTable;
 	}
-
+	
 	public void definirAlturaPadraoGrid()
 	{
 		if (Window.getClientHeight() > 0)
@@ -187,9 +192,34 @@ public abstract class QIGrid<ENTIDADE> extends QIPilhaVertical implements QITela
 			pagerPanel.setHeight((Window.getClientHeight() - 106) * .35 + "px");
 		}
 	}
-
+	
+	public void exibirTodosOsValores()
+	{
+		if (!adicionouRowCountHandler)
+		{
+			adicionarRowCountChangeHandler();
+		}
+		
+		pagerPanel.setHeight("100%");
+	}
+	
+	private void adicionarRowCountChangeHandler()
+	{
+		HasRows view = pagerPanel.getDisplay();
+		view.addRowCountChangeHandler(new RowCountChangeEvent.Handler()
+		{
+			
+			@Override
+			public void onRowCountChange(RowCountChangeEvent event)
+			{
+				HasRows view = pagerPanel.getDisplay();
+				view.setVisibleRange(0, event.getNewRowCount());
+			}
+		});
+	}
+	
 	// METODOS ABSTRATOS
-
+	
 	public abstract void selecionou(ENTIDADE entidade);
-
+	
 }

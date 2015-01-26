@@ -25,10 +25,7 @@ public class QIValidacaoData implements QIValidarCampo
 		{
 			DateBox dbCampo = (DateBox) campoValidacao.getCampo();
 
-			if (dbCampo.getValue() != null)
-			{
-				return true;
-			}
+			return dbCampo.getValue() != null;
 		}
 
 		return false;
