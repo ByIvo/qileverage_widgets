@@ -8,6 +8,8 @@ import br.com.qileverage.widgets.QITela;
 import br.com.qileverage.widgets.popup.ShowMorePagerPanel;
 
 import com.google.gwt.user.cellview.client.CellList;
+import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.view.client.SingleSelectionModel;
 
 public class QICellList<ENTIDADE> extends CellList<ENTIDADE> implements QITela
@@ -56,6 +58,22 @@ public class QICellList<ENTIDADE> extends CellList<ENTIDADE> implements QITela
 	public void montarTela()
 	{
 
+	}
+	
+	public void ativarImagemCarregandoComoEmptyList()
+	{
+		SimplePanel spImagme = new SimplePanel();
+		spImagme.getElement().getStyle().setProperty("width","100%");
+		spImagme.getElement().getStyle().setProperty("textAlign","center");
+		
+		Image imgCarregando = new Image(br.com.qileverage.widgets.resources.Resources.INSTANCE.imgLoading());
+		
+		spImagme.add(imgCarregando);
+		
+		imgCarregando.getElement().getStyle().setProperty("margin", "auto");
+		this.setEmptyListWidget(spImagme);
+		
+		this.setRowData(new ArrayList<ENTIDADE>());
 	}
 
 	@SuppressWarnings("unchecked")
