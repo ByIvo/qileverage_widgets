@@ -12,6 +12,7 @@ import com.google.gwt.cell.client.HasCell;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.user.cellview.client.Column;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Image;
 
 public abstract class QIGridColunaOpcaoExcluir<ENTIDADE> extends QIGrid<ENTIDADE>
@@ -57,7 +58,6 @@ public abstract class QIGridColunaOpcaoExcluir<ENTIDADE> extends QIGrid<ENTIDADE
 		this.getCellTable().insertColumn(this.getCellTable().getColumnCount() == 0 ? 0 : this.getCellTable().getColumnCount() - 1, coluna, nomeColuna);
 	}
 	
-
 	public void adicionarColuna(Column<ENTIDADE, ?> coluna, String nomeColuna, int posicao, boolean removerColunaNessaPosicao)
 	{
 		// super.adicionarColuna(colurna, nomeColuna);

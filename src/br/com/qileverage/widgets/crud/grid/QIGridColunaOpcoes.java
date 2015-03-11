@@ -11,7 +11,9 @@ public abstract class QIGridColunaOpcoes<ENTIDADE> extends QIGrid<ENTIDADE>
 {
 
 	private List<HasCell<ENTIDADE, ?>> listaColunas;
-	private CompositeCell<ENTIDADE> colunaComposta;
+	private CompositeCell<ENTIDADE> compositeOpcoes;
+	
+	Column<ENTIDADE, ENTIDADE> colComposta;
 
 	public QIGridColunaOpcoes()
 	{
@@ -34,9 +36,9 @@ public abstract class QIGridColunaOpcoes<ENTIDADE> extends QIGrid<ENTIDADE>
 
 	public void finalizarAdicaoColunaOpcoes()
 	{
-		colunaComposta = new CompositeCell<ENTIDADE>(listaColunas);
+		compositeOpcoes = new CompositeCell<ENTIDADE>(listaColunas);
 
-		Column<ENTIDADE, ENTIDADE> colComposta = new Column<ENTIDADE, ENTIDADE>(colunaComposta)
+		colComposta = new Column<ENTIDADE, ENTIDADE>(compositeOpcoes)
 		{
 
 			@Override
@@ -49,6 +51,11 @@ public abstract class QIGridColunaOpcoes<ENTIDADE> extends QIGrid<ENTIDADE>
 
 		adicionarColuna(colComposta, "Opções");
 		getCellTable().setColumnWidth(colComposta, "auto");
+	}
+	
+	public void setWidthColunaOpcoes(String width)
+	{
+		this.getCellTable().setColumnWidth(colComposta, width);
 	}
 
 }

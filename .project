@@ -3,6 +3,7 @@
 	<name>QILeverageWidgets</name>
 	<comment></comment>
 	<projects>
+		<project>QIRelatorioDinamico</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
