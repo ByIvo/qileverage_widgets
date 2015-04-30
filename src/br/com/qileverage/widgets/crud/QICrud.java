@@ -22,6 +22,8 @@ import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.DoubleClickEvent;
+import com.google.gwt.event.dom.client.DoubleClickHandler;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant;
 import com.google.gwt.user.client.ui.HasVerticalAlignment.VerticalAlignmentConstant;
@@ -34,11 +36,14 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 	private QIPainelCamposCadastro qiPainelCamposCadastro;
 	private QIUnorderedList qiListaBotoes;
 	
+	private QIPainelFiltrarResultados filtro;
+	
 	private QIPilhaVertical qiPainelWidgetCadastro;
 	
 	private QIBotaoAdicionar btnAdicionar;
 	private QIBotaoAlterar btnAlterar;
 	private QIBotaoCancelar btnCancelar;
+//	private QIBotaoPesquisar btnFiltro;
 	
 	private QIGridColunaOpcaoExcluir<ENTIDADE> gridEntidades;
 	
@@ -140,18 +145,29 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 		
 		qiListaBotoes.clear();
 		qiListaBotoes.add(btnAlterar);
+//		qiListaBotoes.add(btnFiltro);
 		qiListaBotoes.add(btnCancelar);
+		
+//		setarTamanhoBotoes();
 		
 		btnCancelar.setEnabled(true);
 	}
 	
+//	private void setarTamanhoBotoes()
+//	{
+////		btnFiltro.getElement().getParentElement().getStyle().setWidth(15, Unit.PCT);
+//	}
+//	
 	public void mudarModoAdicao()
 	{
 		isModoAlteracao = false;
 		
 		qiListaBotoes.clear();
 		qiListaBotoes.add(btnAdicionar);
+//		qiListaBotoes.add(btnFiltro);
 		qiListaBotoes.add(btnCancelar);
+		
+//		setarTamanhoBotoes();
 		
 		btnCancelar.setEnabled(true);
 		
@@ -273,6 +289,16 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 		qiListaBotoes = new QIUnorderedList();
 		qiPainelCamposCadastro = new QIPainelCamposCadastro();
 		
+		filtro = new QIPainelFiltrarResultados()
+		{
+			
+			@Override
+			public void filtrar(String filtro)
+			{
+				filtrarGenerico(filtro);
+			}
+		};
+		
 		qiPainelWidgetCadastro = new QIPilhaVertical();
 		
 		lblDescricaoCrud = new Label();
@@ -281,6 +307,7 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 		btnAdicionar = new QIBotaoAdicionar();
 		btnAlterar = new QIBotaoAlterar();
 		btnCancelar = new QIBotaoCancelar();
+//		btnFiltro = new QIBotaoPesquisar();
 		
 		gridEntidades = new QIGridColunaOpcaoExcluir<ENTIDADE>()
 		{
@@ -323,6 +350,18 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 		isModoAlteracao = false;
 		btnCancelar.setEnabled(false);
 		
+		gridEntidades.addDomHandler(new DoubleClickHandler()
+		{
+			
+			@Override
+			public void onDoubleClick(DoubleClickEvent event)
+			{
+				filtro.show();
+			}
+		}, DoubleClickEvent.getType());
+		
+		gridEntidades.exibirTodosOsValores();
+		
 		gridEntidades.definirAlturaPadraoGrid();
 		
 		this.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_crud());
@@ -336,6 +375,7 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 		btnAdicionar.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_crud_painelhorizontalcampos_painelbotoes_botaoadicionaralterar());
 		btnAlterar.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_crud_painelhorizontalcampos_painelbotoes_botaoadicionaralterar());
 		btnCancelar.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_crud_painelhorizontalcampos_painelbotoes_botaocancelar());
+//		btnFiltro.addStyleName(Resources.INSTANCE.cssQiLeverageWidgets().widget_crud_painelhorizontalcampos_painelbotoes_botaofiltro());
 		
 		btnAdicionar.addClickHandler(new ClickHandler()
 		{
@@ -367,13 +407,22 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 			}
 		});
 		
+//		btnFiltro.addClickHandler(new ClickHandler()
+//		{
+//			
+//			@Override
+//			public void onClick(ClickEvent event)
+//			{
+//				filtro.show();
+//			}
+//		});
+		
 	}
 	
 	@Override
 	public void montarTela()
 	{
-		qiListaBotoes.add(btnAdicionar);
-		qiListaBotoes.add(btnCancelar);
+		mudarModoAdicao();
 		
 		QIPilhaHorizontal pilhaHorizontalCaposDescricao = new QIPilhaHorizontal();
 		
@@ -385,6 +434,7 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 		qiPainelWidgetCadastro.adicionarWidget(qiPainelCamposCadastro);
 		// qiPainelWidgetCadastro.adicionarWidget(qiListaBotoes);
 		
+		this.adicionarWidget(filtro);
 		this.adicionarWidget(gridEntidades);
 		this.adicionarWidget(qiPainelWidgetCadastro);
 		this.adicionarWidget(qiListaBotoes);
@@ -414,6 +464,11 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 		return envioFormularioHandler;
 	}
 	
+	public void iniciarPesquisa()
+	{
+		
+	}
+	
 	// METODOS ABSTRATOS
 	
 	public abstract ENTIDADE getEntidadeByForm(ENTIDADE entidade);
@@ -431,5 +486,7 @@ public abstract class QICrud<ENTIDADE extends Entidade> extends QIPilhaVertical 
 	public abstract void limparCampos();
 	
 	public abstract boolean validacaoExtraAdicao();
+	
+	public abstract void filtrarGenerico(String filtroGenerico);
 	
 }

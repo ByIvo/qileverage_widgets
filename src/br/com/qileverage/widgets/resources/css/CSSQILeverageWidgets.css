@@ -613,6 +613,45 @@ acessos .menu_acessos_painelacessos_labelacesso:hover {
 	margin-right: auto;
 }
 
+.widget_crud_painelhorizontalcampos_painelbotoes_botaofiltro{
+	margin-left: 5px;
+	margin-right: 5px;
+	width: 28px !important;
+}
+
+.widget_crud_griddados_filtroresultados
+{
+	width: 30%;
+	height: 50px;
+	position: fixed;
+	background-color: #EEEEEE;
+	border-radius: 10px;
+	border: 1px solid #AAAAAA;
+	z-index: 1;
+	margin-left: 35%;
+	padding: 10px;
+	text-align: center;
+}
+
+.widget_crud_griddados_filtroresultados_layout
+{
+	width: 100%;
+	height: 100%;	
+}
+
+.widget_crud_griddados_filtroresultados_labeltitulo
+{
+	font-weight: bold;
+	text-align: left;
+	width: 100%;
+}
+
+.widget_crud_griddados_filtroresultados_textboxfiltro
+{
+	width: 80%;
+	margin: 10px;
+}
+
 /*-----------------------------------------------------------------------------------------------------------
  * CSS GRID 
  * --------------------------------------------------------------------------------------------------------*/
@@ -671,9 +710,11 @@ acessos .menu_acessos_painelacessos_labelacesso:hover {
 	width: 49%;
 }
 
-.widget_crud_painelcamposcadastro_listabotoes_celula > li
+.widget_crud_painelcamposcadastro_listabotoes_celula > div
 {
-	width: 50%;
+	min-width: 15%;
+	width: 45%;
+	max-width: 40%;
 	display: inline-block;
 }
 

@@ -11,5 +11,6 @@ public class QIBotaoAdicionarAlterar extends QIBotaoPadrao
 	{
 		super(DIRECAO_LAYOUT.RTL);
 		this.setImagemBotao(Resources.INSTANCE.imgSalvar());
+		
 	}
 }
